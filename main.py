@@ -1,7 +1,7 @@
 import json
 
 # Printing the Game Grid
-def print_grid(player_x, player_y, box_x, box_y, goal_x, goal_y, grid_size, level):
+def print_grid(player_x, player_y, box_x, box_y, goal_x, goal_y, grid_size, level) -> None:
     print("\033c", end="") # Print Statement to Clear the Console / Terminal
     print("To progress to the next level, push the box (☐) onto the goal (G).")
     print(f"Player: P | Box: ☐ | Goal: G")
@@ -14,7 +14,7 @@ def print_grid(player_x, player_y, box_x, box_y, goal_x, goal_y, grid_size, leve
         print(" ".join(row))
 
 # Handling Player Movement
-def move_player(player_x, player_y, direction, grid_size):
+def move_player(player_x, player_y, direction, grid_size) -> tuple:
     if direction == "w" and player_y > 0:
         player_y -= 1
     elif direction == "s" and player_y < grid_size - 1:
@@ -26,7 +26,7 @@ def move_player(player_x, player_y, direction, grid_size):
     return player_x, player_y
 
 # Pushing the Box if the Player Moves into its Position
-def box_collision_player(box_x, box_y, player_x, player_y, last_input, grid_size):
+def box_collision_player(box_x, box_y, player_x, player_y, last_input, grid_size) -> tuple:
     if player_x == box_x and player_y == box_y:
         if last_input == "w" and box_y > 0:
             box_y -= 1
@@ -40,14 +40,14 @@ def box_collision_player(box_x, box_y, player_x, player_y, last_input, grid_size
     return box_x, box_y
 
 # Handling Collision between the Box and the Goal
-def box_collision_goal(box_x, box_y, goal_x, goal_y):
+def box_collision_goal(box_x, box_y, goal_x, goal_y) -> bool:
     if box_x == goal_x and box_y == goal_y:
         return True
     else:
         return False
 
 # Updating the Grid Based on Player Input
-def update_grid(player_x, player_y, box_x, box_y, goal_x, goal_y, grid_size, game_started):
+def update_grid(player_x, player_y, box_x, box_y, goal_x, goal_y, grid_size, game_started) -> tuple:
     level_clear = False
     if game_started == True:
         move = input("Enter your move (w/a/s/d) or 'q' to quit: ").lower()
