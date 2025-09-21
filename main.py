@@ -71,8 +71,7 @@ def update_grid(player_x, player_y, box_x, box_y, goal_x, goal_y, grid_size, gam
 
     return player_x, player_y, box_x, box_y, level_clear
 
-# Running the Sokoban Game
-if __name__ == "__main__":
+def main() -> None:
     level = 1
     level_clear = False
 
@@ -111,3 +110,7 @@ if __name__ == "__main__":
             if level_clear & (level == len(levels)): # The Last Level has been Cleared if this IF condition is met
                 print("Congratulations! You've completed all levels!")
                 game = False
+
+# Running the Sokoban Game
+if __name__ == "__main__":
+    main()
