@@ -7,7 +7,6 @@ All of the dictionaries are stored in a list, with each dictionary representing 
 
 import json
 from dataclasses import dataclass
-import os
 
 """
 Data Class for Level Representation
@@ -26,7 +25,7 @@ def print_grid(level: Level, level_num: int) -> None:
     """
     Prints the current state of the game grid for the given level.
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    print("\033c", end="") # Clear the Console
     print("To progress to the next level, push the box (☐) onto the goal (G).")
     print(f"Player: P | Box: ☐ | Goal: G")
     print(f"Level {level_num}")
